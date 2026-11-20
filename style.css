@@ -1015,8 +1015,8 @@ ol {
   color: var(--color-muted);
 }
 
-/* Ubicación: mapa de Google embebido. Ocupa la fila completa del grid
-   (debajo de los datos de contacto y el formulario) */
+/* Ubicación: mapa de Google embebido. En móvil va debajo del formulario;
+   en escritorio ocupa la columna izquierda, al lado del formulario */
 .contact__map-block {
   min-width: 0;
 }
@@ -1167,23 +1167,24 @@ ol {
 
   .contact {
     grid-template-columns: 1fr 1.2fr;
+    grid-template-areas:
+      "info info"
+      "map  form";
+    align-items: start;
   }
 
-  /* Escritorio: datos de contacto arriba a la izquierda, mapa debajo a la
-     izquierda y formulario a la derecha ocupando toda la altura */
+  /* Datos de contacto arriba (ancho completo); debajo, el mapa a la
+     izquierda y el formulario a la derecha, lado a lado */
   .contact__info {
-    grid-column: 1;
-    grid-row: 1;
+    grid-area: info;
   }
 
   .contact__map-block {
-    grid-column: 1;
-    grid-row: 2;
+    grid-area: map;
   }
 
   .contact__form {
-    grid-column: 2;
-    grid-row: 1 / 3;
+    grid-area: form;
   }
 
   /* En media columna el mapa necesita una proporción más alta */
