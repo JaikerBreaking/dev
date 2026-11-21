@@ -490,7 +490,15 @@ ol {
   /* Proporcion real del SVG: el fondo nunca se deforma */
   aspect-ratio: 1442 / 526;
   transform: translate(-50%, -50%);
-  
+  /* Fondo decorativo del hero: lineas curvas detras del retrato */
+  background-image: url("img/Group 99.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* Las lineas (2px) no compiten con la foto */
+  opacity: 0.6;
+  /* El retrato (z-index:1) pinta por encima del vector */
+  z-index: 0;
 }
 
 /* El retrato tiene el patron completo de las tarjetas del proyecto */
@@ -498,6 +506,7 @@ ol {
   display: block;
   /* Encima del vector decorativo */
   position: relative;
+  z-index: 1;
   width: 100%;
   /* Proporcion real de la foto (3456x4608 = 3:4): mantiene la altura sin <img> */
   aspect-ratio: 3 / 4;
