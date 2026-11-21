@@ -3,12 +3,103 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portafolio de Jaiker Aponte, desarrollador web frontend: habilidades, experiencia, proyectos y contacto.">
+
+  <!-- Título: marca + rol + ubicación. Una sola aparición de "Jaiker Aponte". -->
+  <title>Jaiker Aponte | Desarrollador Web Frontend en Barinas, Venezuela</title>
+  <meta name="description" content="Portafolio de Jaiker Aponte, desarrollador web frontend en Barinas. Creo sitios responsivos y accesibles con HTML, CSS y JavaScript. Mira mis proyectos y escríbeme.">
   <meta name="author" content="Jaiker Aponte">
   <meta name="theme-color" content="#020403">
-  <title>Jaiker Aponte | Desarrollador Web</title>
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+
+  <!-- Una sola página: el canonical es la raíz, sin /index.html -->
+  <link rel="canonical" href="[URL_PUBLICA]/">
+
+  <!-- Open Graph: controla cómo se comparte el enlace -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_VE">
+  <meta property="og:site_name" content="Jaiker Aponte | Desarrollador Web Frontend">
+  <meta property="og:url" content="[URL_PUBLICA]/">
+  <meta property="og:title" content="Jaiker Aponte | Desarrollador Web Frontend en Barinas">
+  <meta property="og:description" content="Sitios web responsivos, accesibles y rápidos, hechos con HTML, CSS y JavaScript. Conoce mis proyectos y formas de contactarme.">
+  <!-- og:image es un metadato, no una etiqueta <img>: conserva la regla de AGENTS.md -->
+  <meta property="og:image" content="[URL_PUBLICA]/img/jaiker%20aponte.jpeg">
+  <meta property="og:image:alt" content="Retrato de Jaiker Aponte, desarrollador web frontend">
+  <meta property="og:image:width" content="[ANCHO_IMAGEN_OG]">
+  <meta property="og:image:height" content="[ALTO_IMAGEN_OG]">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon en línea: solo usa los colores de la paleta, sin archivos extra. -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20fill='%23020403'/%3E%3Ctext%20x='32'%20y='44'%20text-anchor='middle'%20font-family='Arial,sans-serif'%20font-size='32'%20font-weight='bold'%20fill='%23FFFFFF'%3EJA%3C/text%3E%3C/svg%3E">
+
+  <!-- Precarga de la fuente para mejorar LCP/FCP (mismo archivo, sin librerías) -->
+  <link rel="preload" href="fonts/rubik-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css">
   <script src="app.js" defer></script>
+
+  <!-- Datos estructurados: todo lo descrito aparece visible en la página -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "[URL_PUBLICA]/#website",
+        "url": "[URL_PUBLICA]/",
+        "name": "Jaiker Aponte | Desarrollador Web Frontend",
+        "description": "Portafolio de Jaiker Aponte, desarrollador web frontend en Barinas, Venezuela.",
+        "inLanguage": "es",
+        "publisher": { "@id": "[URL_PUBLICA]/#person" }
+      },
+      {
+        "@type": "ProfilePage",
+        "@id": "[URL_PUBLICA]/#webpage",
+        "url": "[URL_PUBLICA]/",
+        "name": "Jaiker Aponte | Desarrollador Web Frontend en Barinas",
+        "isPartOf": { "@id": "[URL_PUBLICA]/#website" },
+        "mainEntity": { "@id": "[URL_PUBLICA]/#person" },
+        "inLanguage": "es"
+      },
+      {
+        "@type": "Person",
+        "@id": "[URL_PUBLICA]/#person",
+        "name": "Jaiker Aponte",
+        "givenName": "Jaiker",
+        "familyName": "Aponte",
+        "url": "[URL_PUBLICA]/",
+        "image": "[URL_PUBLICA]/img/jaiker%20aponte.jpeg",
+        "jobTitle": "Desarrollador Web Frontend",
+        "description": "Desarrollador web frontend radicado en Barinas, Venezuela. Crea sitios responsivos y accesibles con HTML, CSS y JavaScript.",
+        "email": "mailto:[TU_CORREO]",
+        "telephone": "[TU_TELEFONO_HREF]",
+        "knowsLanguage": "es",
+        "knowsAbout": [
+          "HTML5",
+          "CSS3",
+          "JavaScript",
+          "Diseño web responsivo",
+          "Accesibilidad web",
+          "Animaciones CSS",
+          "Diseño de interfaces"
+        ],
+        "workLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Barinas",
+            "addressRegion": "[ESTADO]",
+            "addressCountry": "VE"
+          }
+        },
+        "sameAs": [
+          "[URL_LINKEDIN]",
+          "[URL_GITHUB]",
+          "[URL_INSTAGRAM]",
+          "[URL_TWITTER]"
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -17,7 +108,7 @@
   <!-- ============================ HEADER / NAVBAR ============================ -->
   <header class="header">
     <nav class="nav" aria-label="Navegación principal">
-      <a class="nav__logo" href="#inicio">Ingeniero<span class="nav__logo-accent">Aponte</span></a>
+      <a class="nav__logo" href="#inicio">Jaiker<span class="nav__logo-accent">Aponte</span></a>
 
       <button class="nav__toggle" type="button"
               aria-expanded="false"
@@ -29,7 +120,7 @@
       <ul class="nav__menu" id="nav-menu">
         <li><a class="nav__link" href="#inicio">Inicio</a></li>
         <li><a class="nav__link" href="#quien-soy">Quién soy</a></li>
-        <li><a class="nav__link" href="#habilidades">Mis habilidades</a></li>
+        <li><a class="nav__link" href="#habilidades">Habilidades</a></li>
         <li><a class="nav__link" href="#experiencia">Experiencia</a></li>
         <li><a class="nav__link" href="#portafolio">Portafolio</a></li>
         <li><a class="nav__link" href="#contacto">Contacto</a></li>
@@ -40,58 +131,60 @@
   <main id="contenido">
 
     <!-- ============================ INICIO ============================ -->
-    <section class="  hero" id="inicio" aria-labelledby="inicio-title">
+    <section class="hero" id="inicio" aria-labelledby="inicio-title">
       <!-- Columna izquierda (48%): la única imagen del hero -->
-      <div class="hero__visual timeline__card">
-          <div class="hero__media">
-            <!-- El retrato se pinta desde CSS con background-image.
-                role="img" + aria-label conservan su significado para lectores de pantalla. -->
-            <span class="hero__portrait" role="img"
-                  aria-label="Retrato de Jaiker Aponte, sonriendo con camisa negra"></span>
-          </div>
+      <div class="hero__visual">
+        <div class="hero__media">
+          <!-- El retrato se pinta desde CSS con background-image.
+               role="img" + aria-label conservan su significado para lectores de pantalla. -->
+          <span class="hero__portrait" role="img"
+                aria-label="Retrato de Jaiker Aponte, desarrollador web frontend"></span>
+        </div>
       </div>
       <!-- Columna derecha (48%): el resto del contenido del hero -->
       <div class="hero__content">
         <p class="section__eyebrow">Hola, soy</p>
-        <h1 class="hero__title" id="inicio-title" data-text="Jaiker Aponte">Jaiker Aponte</h1>
-        <p class="hero__role">Desarrollador Web Frontend</p>
+        <!-- aria-label evita que los pseudoelementos del glitch se anuncien de más -->
+        <h1 class="hero__title" id="inicio-title" aria-label="Jaiker Aponte" data-text="Jaiker Aponte">Jaiker Aponte</h1>
+        <p class="hero__role">Desarrollador Web Frontend · Barinas, Venezuela</p>
         <p class="hero__description">
-          Construyo interfaces web modernas, rápidas y accesibles, cuidando cada detalle
-          para que el usuario tenga una buena experiencia en cualquier dispositivo.
+          Construyo sitios web rápidos, accesibles y fáciles de usar, con diseño mobile-first
+          que se ve bien en móviles, tablets y pantallas grandes. Cuido la estructura
+          semántica y cada detalle de interacción, desde la primera línea de HTML hasta
+          la última animación.
         </p>
 
         <div class="hero__actions">
-          <a class="btn btn--primary" href="#portafolio">Ver portafolio</a>
-          <a class="btn btn--outline" href="#contacto">Contáctame</a>
+          <a class="btn btn--primary" href="#portafolio">Ver proyectos</a>
+          <a class="btn btn--outline" href="#contacto">Escríbeme</a>
         </div>
 
-        <!-- Contenido de ejemplo: reemplaza estos enlaces por tus perfiles reales. -->
         <ul class="social-list" aria-label="Redes sociales y contacto rápido">
           <li>
-            <a class="social-list__link" href="#" aria-label="Instagram de Jaiker Aponte">
+            <a class="social-list__link" href="[URL_INSTAGRAM]" aria-label="Perfil de Instagram de Jaiker Aponte">
               <span class="social-list__icon social-list__icon--instagram" aria-hidden="true"></span>
             </a>
           </li>
           <li>
-            <a class="social-list__link" href="#" aria-label="Twitter de Jaiker Aponte">
+            <a class="social-list__link" href="[URL_TWITTER]" aria-label="Perfil de Twitter de Jaiker Aponte">
               <span class="social-list__icon social-list__icon--twitter" aria-hidden="true"></span>
             </a>
           </li>
           <li>
-            <a class="social-list__link" href="#" aria-label="Perfil de LinkedIn de Jaiker Aponte">
+            <a class="social-list__link" href="[URL_LINKEDIN]" aria-label="Perfil de LinkedIn de Jaiker Aponte">
               <span class="social-list__icon social-list__icon--linkedin" aria-hidden="true"></span>
             </a>
           </li>
           <li>
-            <a class="social-list__link" href="mailto:jaiker@ejemplo.com" aria-label="Enviar un correo a Jaiker Aponte">
+            <a class="social-list__link" href="mailto:[TU_CORREO]" aria-label="Enviar un correo a Jaiker Aponte">
               <span class="social-list__icon social-list__icon--mail" aria-hidden="true"></span>
             </a>
           </li>
         </ul>
 
-        <!-- Consola decorativa: el texto se escribe solo con CSS.
-             Es redundante con el texto visible, por eso queda oculta a lectores de pantalla. -->
-        <div class=" timeline__card hero__terminal" aria-hidden="true">
+        <!-- Consola decorativa: el texto se escribe solo con CSS y queda oculta
+             a lectores de pantalla por ser redundante con el contenido visible. -->
+        <div class="hero__terminal" aria-hidden="true">
           <div class="hero__terminal-bar">
             <span class="hero__terminal-dot"></span>
             <span class="hero__terminal-dot"></span>
@@ -124,25 +217,30 @@
     </section>
 
     <!-- ============================ QUIÉN SOY ============================ -->
-    <section class="  section" id="quien-soy" aria-labelledby="quien-soy-title">
+    <section class="section" id="quien-soy" aria-labelledby="quien-soy-title">
       <p class="section__eyebrow">Un poco sobre mí</p>
-      <h2 class="section__title" id="quien-soy-title">Quién soy</h2>
+      <h2 class="section__title" id="quien-soy-title">Quién soy y qué hago</h2>
 
       <div class="about">
         <div class="about__text">
-          <!-- Contenido de ejemplo: reemplaza con tu biografía real. -->
           <p>
-            Soy desarrollador web con pasión por el frontend y el diseño de interfaces.
-            Me gusta convertir ideas en sitios claros, funcionales y agradables de usar super intuitivas.
+            Soy desarrollador web frontend radicado en Barinas, Venezuela. Me especializo
+            en convertir diseños en interfaces claras, rápidas y accesibles, cuidando la
+            estructura semántica y el comportamiento de la página en cada tamaño de pantalla.
           </p>
           <p>
-            Trabajo con HTML semántico, CSS moderno y JavaScript, aplicando buenas
-            prácticas de accesibilidad y un enfoque mobile-first desde el primer
-            momento, apoyando todos mis conocimientos profesionales con IA.
+            Trabajo con HTML semántico, CSS moderno y JavaScript vanilla, y aplico el enfoque
+            mobile-first desde la primera línea de código. Uso herramientas de IA como apoyo
+            para acelerar tareas repetitivas y revisar decisiones técnicas, pero cada proyecto
+            lo valido y lo ajusto personalmente antes de entregarlo.
+          </p>
+          <p>
+            Si necesitas una landing page, un sitio corporativo o mejorar una web existente,
+            escríbeme y lo conversamos.
           </p>
         </div>
 
-        <dl class="about__data timeline__card">
+        <dl class="about__data">
           <div class="about__data-item">
             <dt>Nombre</dt>
             <dd>Jaiker Aponte</dd>
@@ -153,11 +251,11 @@
           </div>
           <div class="about__data-item">
             <dt>Enfoque</dt>
-            <dd>Frontend y experiencias web</dd>
+            <dd>Desarrollo frontend y experiencias web responsivas</dd>
           </div>
           <div class="about__data-item">
             <dt>Disponibilidad</dt>
-            <dd>Proyectos freelance</dd>
+            <dd>Proyectos freelance y colaboraciones remotas</dd>
           </div>
         </dl>
       </div>
@@ -166,91 +264,92 @@
     <!-- ============================ MIS HABILIDADES ============================ -->
     <section class="section" id="habilidades" aria-labelledby="habilidades-title">
       <p class="section__eyebrow">Lo que sé hacer</p>
-      <h2 class="section__title" id="habilidades-title">Mis habilidades</h2>
+      <h2 class="section__title" id="habilidades-title">Mis habilidades y tecnologías</h2>
 
-      <ul class="skills ">
+      <ul class="skills">
         <li class="skill timeline__card">
           <span class="skill__icon-box">
             <span class="skill__icon skill__icon--web" aria-hidden="true"></span>
           </span>
-          <h3 class="skill__title">Desarrollo web</h3>
-          <p class="skill__text">Sitios y aplicaciones con HTML5 semántico, CSS3 y JavaScript.</p>
+          <h3 class="skill__title">Desarrollo web frontend</h3>
+          <p class="skill__text">Maqueto sitios y aplicaciones con HTML5 semántico, CSS3 moderno y JavaScript, priorizando un código limpio y fácil de mantener.</p>
         </li>
         <li class="skill timeline__card">
           <span class="skill__icon-box">
             <span class="skill__icon skill__icon--motion" aria-hidden="true"></span>
           </span>
-          <h3 class="skill__title">Animaciones</h3>
-          <p class="skill__text">Transiciones y animaciones suaves que dan vida a la interfaz.</p>
+          <h3 class="skill__title">Animaciones e interacciones</h3>
+          <p class="skill__text">Creo transiciones y microinteracciones en CSS y JavaScript que mejoran la experiencia sin sacrificar el rendimiento.</p>
         </li>
         <li class="skill timeline__card">
           <span class="skill__icon-box">
             <span class="skill__icon skill__icon--design" aria-hidden="true"></span>
           </span>
-          <h3 class="skill__title">Diseño UI</h3>
-          <p class="skill__text">Interfaces coherentes con sistemas de color, espaciado y tipografía.</p>
+          <h3 class="skill__title">Diseño de interfaces (UI)</h3>
+          <p class="skill__text">Diseño interfaces coherentes con tipografía, espaciado y contraste, siguiendo buenas prácticas de accesibilidad.</p>
         </li>
         <li class="skill timeline__card">
           <span class="skill__icon-box">
             <span class="skill__icon skill__icon--mobile" aria-hidden="true"></span>
           </span>
-          <h3 class="skill__title">Diseño responsive</h3>
-          <p class="skill__text">Mobile-first: de móviles pequeños hasta tablets y televisores.</p>
+          <h3 class="skill__title">Diseño responsivo y accesible</h3>
+          <p class="skill__text">Diseño mobile-first: de móviles pequeños hasta tablets y televisores de 42 pulgadas.</p>
         </li>
       </ul>
 
-      <!-- Contenido de ejemplo: ajusta la lista a tu stack real. -->
+      <!-- Conservar solo lo que manejes de verdad: knowsAbout debe coincidir -->
       <ul class="tech-list" aria-label="Tecnologías que manejo">
         <li class="tech-list__item">HTML5</li>
         <li class="tech-list__item">CSS3</li>
-        <li class="tech-list__item">JavaScript</li>
+        <li class="tech-list__item">JavaScript (vanilla)</li>
         <li class="tech-list__item">Metodología mobile-first</li>
-        <li class="tech-list__item">Accesibilidad (WCAG)</li>
+        <li class="tech-list__item">Accesibilidad web (WCAG)</li>
         <li class="tech-list__item">Git</li>
         <li class="tech-list__item">Figma</li>
-        <li class="tech-list__item">OpencodeIA</li>
-        <li class="tech-list__item">Base de datos SQL</li>
-        <li class="tech-list__item">React</li>
+        <li class="tech-list__item">[HERRAMIENTA_IA]</li>
+        <li class="tech-list__item">[TECNOLOGIA_ADICIONAL]</li>
       </ul>
     </section>
 
     <!-- ============================ EXPERIENCIA ============================ -->
-    <section class="  section" id="experiencia" aria-labelledby="experiencia-title">
+    <section class="section" id="experiencia" aria-labelledby="experiencia-title">
       <p class="section__eyebrow">Mi trayectoria</p>
-      <h2 class="section__title" id="experiencia-title">Experiencia</h2>
+      <h2 class="section__title" id="experiencia-title">Experiencia y formación</h2>
 
-      <!-- Contenido de ejemplo: reemplaza cargos, empresas y fechas por tu experiencia real. -->
+      <!-- Sustituir TODOS los marcadores por datos reales. Si no hay experiencia
+           laboral formal, eliminar la segunda tarjeta en vez de dejar un puesto inventado. -->
       <ol class="timeline">
         <li>
           <article class="timeline__card">
-            <p class="timeline__date"><time datetime="2024">2024 — Actualidad</time></p>
-            <h3 class="timeline__title">Desarrollador Frontend Freelance</h3>
-            <p class="timeline__place">Proyectos independientes</p>
+            <p class="timeline__date"><time datetime="[FECHA_INICIO_1]">[FECHA_INICIO_1] — Actualidad</time></p>
+            <h3 class="timeline__title">Desarrollador Web Frontend Freelance</h3>
+            <p class="timeline__place">Proyectos independientes · [CIUDAD] (remoto)</p>
             <p class="timeline__text">
-              Diseño y desarrollo de landings y sitios corporativos responsive,
-              optimizando rendimiento y accesibilidad.
+              Diseño y desarrollo de landing pages y sitios corporativos responsivos con
+              HTML, CSS y JavaScript. Me encargo de la maquetación, las animaciones y la
+              optimización de rendimiento y accesibilidad.
             </p>
           </article>
         </li>
         <li>
           <article class="timeline__card">
-            <p class="timeline__date"><time datetime="2022">2022 — 2024</time></p>
-            <h3 class="timeline__title">Desarrollador Web Junior</h3>
-            <p class="timeline__place">Empresa de ejemplo</p>
+            <p class="timeline__date"><time datetime="[FECHA_INICIO_2]">[FECHA_INICIO_2] — [FECHA_FIN_2]</time></p>
+            <h3 class="timeline__title">[TITULO_PUESTO_2]</h3>
+            <p class="timeline__place">[NOMBRE_EMPRESA]</p>
             <p class="timeline__text">
-              Maquetación de vistas, mantenimiento de estilos y corrección de
-              errores en proyectos web existentes.
+              Maquetación de vistas, mantenimiento de estilos y corrección de errores en
+              proyectos web existentes, trabajando con [TECNOLOGIAS_EQUIPO].
             </p>
           </article>
         </li>
         <li>
           <article class="timeline__card">
-            <p class="timeline__date"><time datetime="2021">2021 — 2022</time></p>
+            <p class="timeline__date"><time datetime="[FECHA_INICIO_3]">[FECHA_INICIO_3] — [FECHA_FIN_3]</time></p>
             <h3 class="timeline__title">Formación en desarrollo web</h3>
-            <p class="timeline__place">Cursos y práctica personal</p>
+            <p class="timeline__place">[NOMBRE_INSTITUCION] o cursos y práctica personal</p>
             <p class="timeline__text">
-              Bases de HTML5, CSS3 y JavaScript, con ejercicios de maquetación
-              mobile-first y proyectos propios.
+              Bases de HTML5, CSS3 y JavaScript, con ejercicios de maquetación mobile-first
+              y proyectos propios.
             </p>
           </article>
         </li>
@@ -259,50 +358,66 @@
 
     <!-- ============================ PORTAFOLIO ============================ -->
     <section class="section" id="portafolio" aria-labelledby="portafolio-title">
-      <p class="section__eyebrow">Proyectos</p>
+      <p class="section__eyebrow">Proyectos seleccionados</p>
       <h2 class="section__title" id="portafolio-title">Portafolio</h2>
 
-      <!-- Contenido de ejemplo: cambia títulos, descripciones y enlaces por tus proyectos reales. -->
-      <div class="projects ">
-        <article class="projectv timeline__card">
-          <!-- Cuando tengas la imagen, reemplaza el div por:
-               <img class="project__media" src="img/proyecto-1.jpg" alt="Vista previa del proyecto Landing Responsive" width="600" height="375" loading="lazy"> -->
-          <div class="project__media">Imagen del proyecto</div>
+      <div class="projects">
+        <article class="project">
+          <div class="project__media" role="img" aria-label="Vista previa de [NOMBRE_PROYECTO_1]"></div>
           <div class="project__body">
-            <h3 class="project__title">Landing page responsive</h3>
-            <p class="project__text">Página de aterrizaje con formulario y animaciones en CSS.</p>
+            <h3 class="project__title">[NOMBRE_PROYECTO_1]: landing page responsive</h3>
+            <p class="project__role">Rol: maquetación y animaciones en CSS</p>
+            <p class="project__text">
+              Página de aterrizaje de una sola sección, con formulario de contacto y
+              animaciones ligeras en CSS. Diseñada mobile-first para cargar rápido y verse
+              bien en cualquier dispositivo.
+            </p>
             <ul class="project__tags" aria-label="Tecnologías usadas">
               <li class="project__tag">HTML5</li>
               <li class="project__tag">CSS3</li>
+              <li class="project__tag">Accesibilidad</li>
             </ul>
-            <a class="project__link" href="#" aria-label="Ver proyecto Landing page responsive">Ver proyecto</a>
+            <a class="project__link" href="[URL_PROYECTO_1]"
+               aria-label="Ver proyecto [NOMBRE_PROYECTO_1]">Ver proyecto: [NOMBRE_PROYECTO_1]</a>
           </div>
         </article>
 
-        <article class="project timeline__card">
-          <div class="project__media">Imagen del proyecto</div>
+        <article class="project">
+          <div class="project__media" role="img" aria-label="Vista previa de [NOMBRE_PROYECTO_2]"></div>
           <div class="project__body">
-            <h3 class="project__title">App de tareas</h3>
-            <p class="project__text">Gestor de tareas con filtros y almacenamiento local.</p>
+            <h3 class="project__title">[NOMBRE_PROYECTO_2]: app de tareas</h3>
+            <p class="project__role">Rol: desarrollo de la lógica en JavaScript</p>
+            <p class="project__text">
+              Gestor de tareas con filtros y almacenamiento local. La lógica en JavaScript
+              vanilla permite crear, editar y marcar tareas sin recargar la página.
+            </p>
             <ul class="project__tags" aria-label="Tecnologías usadas">
               <li class="project__tag">JavaScript</li>
               <li class="project__tag">CSS3</li>
+              <li class="project__tag">LocalStorage</li>
             </ul>
-            <a class="project__link" href="#" aria-label="Ver proyecto App de tareas">Ver proyecto</a>
+            <a class="project__link" href="[URL_PROYECTO_2]"
+               aria-label="Ver proyecto [NOMBRE_PROYECTO_2]">Ver proyecto: [NOMBRE_PROYECTO_2]</a>
           </div>
         </article>
 
-        <article class="project timeline__card">
-          <div class="project__media">Imagen del proyecto</div>
+        <article class="project">
+          <div class="project__media" role="img" aria-label="Vista previa de [NOMBRE_PROYECTO_3]"></div>
           <div class="project__body">
-            <h3 class="project__title">Portafolio personal</h3>
-            <p class="project__text">Este sitio: estructura semántica y navegación responsive.</p>
+            <h3 class="project__title">[NOMBRE_PROYECTO_3]: portafolio personal (este sitio)</h3>
+            <p class="project__role">Rol: diseño y desarrollo completo</p>
+            <p class="project__text">
+              Sitio estático de una sola página con navegación responsive, secciones
+              ancladas y formulario sin backend. Construido con HTML semántico, CSS y
+              JavaScript vanilla.
+            </p>
             <ul class="project__tags" aria-label="Tecnologías usadas">
               <li class="project__tag">HTML5</li>
               <li class="project__tag">CSS3</li>
               <li class="project__tag">JavaScript</li>
             </ul>
-            <a class="project__link" href="#" aria-label="Ver proyecto Portafolio personal">Ver proyecto</a>
+            <a class="project__link" href="[URL_PROYECTO_3]"
+               aria-label="Ver proyecto [NOMBRE_PROYECTO_3]">Ver proyecto: [NOMBRE_PROYECTO_3]</a>
           </div>
         </article>
       </div>
@@ -312,10 +427,13 @@
     <section class="section" id="contacto" aria-labelledby="contacto-title">
       <p class="section__eyebrow">Hablemos</p>
       <h2 class="section__title" id="contacto-title">Contacto</h2>
+      <p class="contact__intro">
+        ¿Necesitas una landing page, un sitio corporativo o mejorar una web existente?
+        Cuéntame qué tienes en mente y lo conversamos.
+      </p>
 
       <div class="contact">
         <div class="contact__info">
-          <!-- Contenido de ejemplo: reemplaza el correo y el teléfono por los tuyos. -->
           <ul class="contact__list">
             <li class="contact__item">
               <span class="contact__icon-box">
@@ -323,63 +441,64 @@
               </span>
               <div>
                 <h3 class="contact__label">Correo</h3>
-                <a class="contact__value" href="mailto:jaiker@ejemplo.com">jaiker@ejemplo.com</a>
+                <a class="contact__value" href="mailto:[TU_CORREO]">[TU_CORREO]</a>
               </div>
             </li>
-            <li class="contact__item ">
+            <li class="contact__item">
               <span class="contact__icon-box">
                 <span class="contact__icon contact__icon--phone" aria-hidden="true"></span>
               </span>
               <div>
                 <h3 class="contact__label">Teléfono</h3>
-                <a class="contact__value" href="tel:+584120000000">+58 412 000 0000</a>
+                <a class="contact__value" href="tel:[TU_TELEFONO_HREF]">[TU_TELEFONO]</a>
               </div>
             </li>
           </ul>
 
-          <p class="contact__note ">
-            ¿Tienes un proyecto en mente? Escríbeme y te responderé lo antes posible.
+          <p class="contact__note">
+            Respondo normalmente en un plazo de [TIEMPO_RESPUESTA]. Si prefieres,
+            escríbeme directamente a [TU_CORREO].
           </p>
         </div>
 
-        <!-- Este formulario aún no está conectado a ningún servicio de envío:
-             configura Formspree, EmailJS o tu propio backend en el action. -->
-          <div class="timeline__card contact__form">
-              <form class="form" action="#" method="post">
-                <div class="form__field ">
-                  <label for="nombre">Nombre</label>
-                  <input type="text" id="nombre" name="nombre" autocomplete="name" required>
-                </div>
-                <div class="form__field">
-                  <label for="email">Correo electrónico</label>
-                  <input type="email" id="email" name="email" autocomplete="email" required>
-                </div>
-                <div class="form__field">
-                  <label for="mensaje">Mensaje</label>
-                  <textarea id="mensaje" name="mensaje" rows="6" required></textarea>
-                </div>
-                <button class="btn btn--primary" type="submit">Enviar mensaje</button>
-              </form>
-          </div>
+        <!-- El formulario abre la aplicación de correo del visitante con el mensaje
+             ya redactado (sin servicios externos). app.js lee el destinatario
+             del enlace mailto de arriba. -->
+        <div class="contact__form">
+          <form class="form" id="contact-form" method="post">
+            <div class="form__field">
+              <label for="nombre">Nombre</label>
+              <input type="text" id="nombre" name="nombre" autocomplete="name" required>
+            </div>
+            <div class="form__field">
+              <label for="email">Correo electrónico</label>
+              <input type="email" id="email" name="email" autocomplete="email" required>
+            </div>
+            <div class="form__field">
+              <label for="mensaje">Mensaje</label>
+              <textarea id="mensaje" name="mensaje" rows="6" required></textarea>
+            </div>
+            <button class="btn btn--primary" type="submit">Preparar mensaje</button>
+            <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
+            <noscript>
+              <p class="form__status">Para preparar el mensaje necesitas JavaScript. Mientras tanto, puedes escribirme a <a href="mailto:[TU_CORREO]">[TU_CORREO]</a>.</p>
+            </noscript>
+          </form>
+        </div>
 
-        <!-- Ubicación: mapa de Google Maps embebido (iframe, sin API key).
-             Google geocodifica la dirección escrita; el enlace de respaldo
-             abre Google Maps en una pestaña nueva. -->
+        <!-- Ubicación aproximada: solo ciudad y región, sin número de casa.
+             El mapa se crea al pulsar el botón para no cargar Google antes de tiempo. -->
         <div class="contact__map-block">
           <h3 class="contact__map-title">Ubicación</h3>
-          <p class="contact__address">
-            Urb. Andrés Bello, Calle Cedeño, casa 11-66, Barinas, Venezuela.
-          </p>
-          <div class="contact__map">
-            <iframe
-              title="Mapa de Google con la ubicación de Jaiker Aponte en Barinas, Venezuela"
-              src="https://www.google.com/maps?q=Urb.%20Andr%C3%A9s%20Bello%2C%20Calle%20Cede%C3%B1o%2C%20casa%2011-66%2C%20Barinas%2C%20Venezuela&amp;z=17&amp;output=embed"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              allowfullscreen></iframe>
+          <p class="contact__address">Barinas, Venezuela.</p>
+          <div class="contact__map" id="contact-map">
+            <button class="contact__map-button" type="button" id="map-button"
+                    data-map-src="https://www.google.com/maps?q=Barinas%2C%20Venezuela&amp;z=13&amp;output=embed">
+              Cargar mapa
+            </button>
           </div>
           <a class="contact__map-link"
-             href="https://www.google.com/maps/search/?api=1&amp;query=Urb.%20Andr%C3%A9s%20Bello%2C%20Calle%20Cede%C3%B1o%2C%20casa%2011-66%2C%20Barinas%2C%20Venezuela"
+             href="https://www.google.com/maps/search/?api=1&amp;query=Barinas%2C%20Venezuela"
              target="_blank" rel="noopener noreferrer">Abrir en Google Maps</a>
         </div>
       </div>
@@ -390,20 +509,26 @@
   <!-- ============================ FOOTER ============================ -->
   <footer class="footer">
     <div class="footer__inner">
-      <p class="footer__copy">© 2026 Jaiker Aponte. Todos los derechos reservados.</p>
+      <div>
+        <p class="footer__copy">© [AÑO] Jaiker Aponte. Todos los derechos reservados.</p>
+        <p class="footer__copy">Hecho con HTML, CSS y JavaScript · Barinas, Venezuela</p>
+      </div>
+
+      <a class="footer__top" href="#inicio">Volver arriba</a>
+
       <ul class="social-list social-list--footer" aria-label="Redes sociales">
         <li>
-          <a class="social-list__link" href="#" aria-label="Instagram de Jaiker Aponte">
+          <a class="social-list__link" href="[URL_INSTAGRAM]" aria-label="Perfil de Instagram de Jaiker Aponte">
             <span class="social-list__icon social-list__icon--instagram" aria-hidden="true"></span>
           </a>
         </li>
         <li>
-          <a class="social-list__link" href="#" aria-label="Twitter de Jaiker Aponte">
+          <a class="social-list__link" href="[URL_TWITTER]" aria-label="Perfil de Twitter de Jaiker Aponte">
             <span class="social-list__icon social-list__icon--twitter" aria-hidden="true"></span>
           </a>
         </li>
         <li>
-          <a class="social-list__link" href="#" aria-label="Perfil de LinkedIn de Jaiker Aponte">
+          <a class="social-list__link" href="[URL_LINKEDIN]" aria-label="Perfil de LinkedIn de Jaiker Aponte">
             <span class="social-list__icon social-list__icon--linkedin" aria-hidden="true"></span>
           </a>
         </li>

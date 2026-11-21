@@ -13,9 +13,11 @@ mediante media queries, pasando por tablets, hasta televisores inteligentes de 4
 ```
 index.html   Estructura semántica de la página y optimización SEO
 style.css    Todo lo visual: paleta, tipografías, fondos y animaciones
-app.js       Lógica del menú de navegación responsive
+app.js       Lógica del menú, sección activa, formulario y mapa bajo demanda
 icon/        Iconografía exportada de Figma
 img/         Imágenes (retrato)
+robots.txt   Instrucciones de indexación para motores de búsqueda
+sitemap.xml  Mapa del sitio para Search Console
 ```
 
 ### Secciones de la página

@@ -1,0 +1,7 @@
+# robots.txt de [DOMINIO]
+# Permitir la indexación de todo el sitio (portafolio público de una sola página).
+User-agent: *
+Allow: /
+
+# URL absoluta del sitemap, según el protocolo de sitemaps.
+Sitemap: [URL_PUBLICA]/sitemap.xml

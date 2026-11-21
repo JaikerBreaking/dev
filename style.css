@@ -99,7 +99,7 @@ body::after {
   z-index: -1;
   pointer-events: none;
   background-repeat: repeat;
-  will-change: transform;
+  /* Sin will-change permanente: evita mantener dos capas en GPU todo el rato */
 }
 
 body::before {
@@ -128,6 +128,13 @@ body::after {
 @keyframes rain-fall-sparse {
   from { transform: translate3d(0, -480px, 0); }
   to   { transform: translate3d(0, 0, 0); }
+}
+
+/* app.js añade .is-idle cuando la pestaña está oculta: no gasta batería
+   animando un fondo que nadie está viendo. */
+body.is-idle::before,
+body.is-idle::after {
+  animation-play-state: paused;
 }
 
 @media (max-width: 767px) {
@@ -212,12 +219,41 @@ ol {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  position: relative;
   padding: 0.5rem 0.75rem;
   /* Mismo esquema que los .btn: fondo negro, borde alfa-blanco, forma pill */
   background: var(--color-bg);
   border: 1px solid var(--color-line);
   border-radius: 999px;
   cursor: pointer;
+}
+
+/* Al abrir el menú el icono se desvanece y dos barras blancas forman la "X".
+   El asset original se conserva y sigue invirtiéndose con filter: invert(1). */
+.nav__toggle::before,
+.nav__toggle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* Centrado con márgenes para que rotate() gire alrededor del centro */
+  width: 1.25rem;
+  height: 2px;
+  margin-top: -1px;
+  margin-left: -0.625rem;
+  background: var(--color-text);
+  opacity: 0;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav__toggle[aria-expanded="true"]::before {
+  opacity: 1;
+  transform: rotate(45deg);
+}
+
+.nav__toggle[aria-expanded="true"]::after {
+  opacity: 1;
+  transform: rotate(-45deg);
 }
 
 /* El icono hamburguesa se exportó oscuro: se invierte para verse sobre fondo oscuro */
@@ -228,6 +264,11 @@ ol {
   background: center / contain no-repeat url("icon/menu1.svg");
   /* El icono exportado es oscuro (#242635): se invierte para verlo sobre el fondo oscuro */
   filter: invert(1);
+  transition: opacity 0.2s ease;
+}
+
+.nav__toggle[aria-expanded="true"] .nav__toggle-icon {
+  opacity: 0;
 }
 
 /* Menú plegable: oculto en móvil, visible en escritorio */
@@ -259,7 +300,8 @@ ol {
 }
 
 .nav__link:hover,
-.nav__link:focus-visible {
+.nav__link:focus-visible,
+.nav__link.is-active {
   color: var(--color-muted);
   background: var(--color-surface);
 }
@@ -305,16 +347,15 @@ ol {
   border: 1px solid transparent;
   border-radius: 999px;
   cursor: pointer;
-  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
-/* Ambas variantes comparten colores exactos: fondo negro, texto blanco,
-   borde alfa-blanco y el mismo hover. Solo cambia el borde del outline
-   un punto mas, para diferenciarlas sin salir de la paleta. */
+/* Jerarquía clara sin salir de la paleta: el primario se rellena de blanco
+   con texto oscuro y el secundario queda transparente con borde alfa-blanco. */
 .btn--primary {
-  background: var(--color-bg);
-  color: var(--color-text);
-  border-color: var(--color-line);
+  background: var(--color-text);
+  color: var(--color-bg);
+  border-color: var(--color-text);
 }
 
 .btn--outline {
@@ -323,11 +364,19 @@ ol {
   border-color: var(--color-line);
 }
 
-.btn--primary:hover,
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.btn--primary:hover {
+  background: var(--color-muted);
+  border-color: var(--color-muted);
+  color: var(--color-bg);
+}
+
 .btn--outline:hover {
   background: var(--color-surface-strong);
   color: var(--color-text);
-  transform: translateY(-3px);
 }
 
 /* ============================ INICIO / HERO ============================ */
@@ -450,7 +499,8 @@ ol {
   margin: 0;
   max-width: 40ch;
   color: var(--color-muted);
-  text-align: justify;
+  /* Justificado generaba ríos de espacio en pantallas estrechas */
+  text-align: start;
   overflow-wrap: break-word;
 }
 
@@ -491,7 +541,7 @@ ol {
   aspect-ratio: 1442 / 526;
   transform: translate(-50%, -50%);
   /* Fondo decorativo del hero: lineas curvas detras del retrato */
-  background-image: url("img/Group 99.svg");
+  background-image: url("img/Group%2099.svg");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -501,23 +551,21 @@ ol {
   z-index: 0;
 }
 
-/* El retrato tiene el patron completo de las tarjetas del proyecto */
+/* El retrato es rectangular con esquinas redondeadas, igual que las tarjetas */
 .hero__portrait {
   display: block;
   /* Encima del vector decorativo */
   position: relative;
   z-index: 1;
   width: 100%;
-  /* Proporcion real de la foto (3456x4608 = 3:4): mantiene la altura sin <img> */
+  /* Proporcion real de la foto (896x1195 = 3:4): mantiene la altura sin <img> */
   aspect-ratio: 3 / 4;
   /* Borde estandar del proyecto (1px, mismo color que tarjetas, consola, etc.) */
   border: 1px solid var(--color-line);
   border-radius: var(--radius);
   /* Sombra estandar del proyecto, igual que tarjetas, consola y formulario */
-  
-  border-radius: 50%;
   box-shadow: var(--shadow);
-  background: center / cover no-repeat url("img/jaiker\ aponte.jpeg");
+  background: center / cover no-repeat url("img/jaiker%20aponte.jpeg");
 }
 
 /* ============================ CONSOLA (TYPEWRITER) ============================ */
@@ -913,6 +961,15 @@ ol {
   overflow-wrap: break-word;
 }
 
+.project__role {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-muted);
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
 .project__text {
   margin: 0 0 1rem;
   color: var(--color-muted);
@@ -1020,10 +1077,24 @@ ol {
   overflow-wrap: anywhere;
 }
 
+/* Introducción de la sección de contacto */
+.contact__intro {
+  margin: -0.5rem 0 1.5rem;
+  max-width: 60ch;
+  color: var(--color-muted);
+}
+
 .contact__note {
   margin-top: 1.5rem;
   max-width: 45ch;
   color: var(--color-muted);
+}
+
+/* Alternativa de contacto cuando JavaScript no está disponible */
+.form__status a {
+  color: var(--color-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 /* Ubicación: mapa de Google embebido. En móvil va debajo del formulario;
@@ -1124,7 +1195,34 @@ ol {
 .form__field input:focus,
 .form__field textarea:focus {
   border-color: var(--color-muted);
-  outline: none;
+}
+
+/* Mensaje de estado del envío: aria-live lo anuncia sin interrumpir */
+.form__status {
+  margin: 0;
+  min-height: 1.5rem;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+/* Mapa bajo demanda: el botón ocupa el mismo recuadro que luego usa el iframe */
+.contact__map-button {
+  width: 100%;
+  height: 100%;
+  min-height: 12rem;
+  padding: 1rem;
+  font: inherit;
+  font-weight: 600;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 0;
+  cursor: pointer;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.contact__map-button:hover {
+  color: var(--color-muted);
+  background: var(--color-surface-strong);
 }
 
 /* ============================ FOOTER ============================ */
@@ -1148,6 +1246,17 @@ ol {
 
 .footer__copy {
   margin: 0;
+  color: var(--color-muted);
+}
+
+.footer__top {
+  font-weight: 600;
+  color: var(--color-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer__top:hover {
   color: var(--color-muted);
 }
 
@@ -1251,7 +1360,7 @@ ol {
     width: auto;
     max-width: 100%;
     /* La proporcion real de la foto sigue mandando: cover recorta
-       sin deformar si hay que estrechar el ovalo */
+       sin deformar si la columna queda mas estrecha */
     aspect-ratio: 3 / 4;
   }
 
