@@ -142,7 +142,7 @@
       );
 
       status.textContent = 'Tu aplicación de correo se abrirá con el mensaje listo. ' +
-        'Si no se abre, escríbeme directamente a [TU_CORREO].';
+        'Si no se abre, escríbeme directamente a jaikerbreaking@gmail.com.';
       window.location.href = 'mailto:' + destinatario + '?subject=' + asunto + '&body=' + cuerpo;
     });
   }
@@ -162,6 +162,20 @@
       mapContainer.textContent = '';
       mapContainer.appendChild(iframe);
     });
+  }
+
+  /* ---------- Botón flotante de WhatsApp ---------- */
+  /* El número se lee del enlace tel: de Contacto para no duplicarlo.
+     wa.me exige solo dígitos (sin +, espacios ni guiones). */
+  var whatsapp = document.getElementById('whatsapp-float');
+  var phoneLink = document.querySelector('.contact__list a[href^="tel:"]');
+
+  if (whatsapp && phoneLink) {
+    var digits = phoneLink.getAttribute('href').replace(/^tel:/, '').replace(/\D/g, '');
+    if (digits) {
+      var mensaje = encodeURIComponent('Hola Jaiker, vine desde tu portafolio.');
+      whatsapp.href = 'https://wa.me/' + digits + '?text=' + mensaje;
+    }
   }
 
   /* ---------- Pausar la lluvia binaria si la pestaña no está visible ---------- */

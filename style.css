@@ -528,33 +528,10 @@ ol {
   max-width: 100%;
 }
 
-/* El vector (lineas curvas, 1442x526) queda detras del retrato:
-   desborda por los lados y escala junto con el manteniendo su proporcion */
-.hero__media::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  /* Mas ancho que el retrato: las lineas lo cruzan por detras */
-  width: 170%;
-  /* Proporcion real del SVG: el fondo nunca se deforma */
-  aspect-ratio: 1442 / 526;
-  transform: translate(-50%, -50%);
-  /* Fondo decorativo del hero: lineas curvas detras del retrato */
-  background-image: url("img/Group%2099.svg");
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  /* Las lineas (2px) no compiten con la foto */
-  opacity: 0.6;
-  /* El retrato (z-index:1) pinta por encima del vector */
-  z-index: 0;
-}
-
 /* El retrato es rectangular con esquinas redondeadas, igual que las tarjetas */
 .hero__portrait {
   display: block;
-  /* Encima del vector decorativo */
+  /* Por encima del fondo de la página */
   position: relative;
   z-index: 1;
   width: 100%;
@@ -1225,6 +1202,46 @@ ol {
   background: var(--color-surface-strong);
 }
 
+/* ============================ BOTÓN FLOTANTE DE WHATSAPP ============================ */
+/* Icono blanco sobre fondo oscuro: mismo esquema que el resto de iconos funcionales. */
+.whatsapp-float {
+  position: fixed;
+  right: 1.25rem;
+  /* Respeta la barra inferior de los móviles con notch */
+  bottom: calc(1.25rem + env(safe-area-inset-bottom));
+  z-index: 110;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  background: var(--color-bg);
+  border: 1px solid var(--color-line);
+  border-radius: 50%;
+  box-shadow: var(--shadow);
+  animation: whatsapp-float 4s ease-in-out infinite;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.whatsapp-float:hover {
+  background: var(--color-surface-strong);
+  transform: scale(1.06);
+}
+
+.whatsapp-float__icon {
+  display: inline-block;
+  width: 1.6rem;
+  height: 1.6rem;
+  background: center / contain no-repeat url("icon/whatsapp.svg");
+}
+
+/* Flotación sutil: se anima "translate" (propiedad independiente) para que
+   el "transform" del hover se combine sin sobrescribir la animación. */
+@keyframes whatsapp-float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -6px; }
+}
+
 /* ============================ FOOTER ============================ */
 
 .footer {
@@ -1262,6 +1279,29 @@ ol {
 
 .social-list--footer {
   margin-top: 0;
+}
+
+/* ============================ CENTRADO DE CONTENIDO ============================ */
+/* Se centran los h3 y los párrafos de contenido. Quedan fuera la consola
+   decorativa, las etiquetas de contacto (van junto a su icono) y los eyebrows. */
+.hero__role,
+.hero__description,
+.about__text p,
+.skill__title,
+.skill__text,
+.timeline__date,
+.timeline__title,
+.timeline__place,
+.timeline__text,
+.project__title,
+.project__role,
+.project__text,
+.contact__intro,
+.contact__note,
+.contact__address,
+.contact__map-title,
+.form__status {
+  text-align: center;
 }
 
 /* ============================ MEDIA QUERIES ============================ */
@@ -1340,8 +1380,7 @@ ol {
     min-width: 0;
   }
 
-  /* El vector (170% del ancho de la imagen) se recorta en su columna
-     para que sus lineas no invadan la columna de texto */
+  /* Evita que el retrato se desborde hacia la columna de texto */
   .hero__visual {
     overflow: hidden;
   }
@@ -1362,6 +1401,17 @@ ol {
     /* La proporcion real de la foto sigue mandando: cover recorta
        sin deformar si la columna queda mas estrecha */
     aspect-ratio: 3 / 4;
+  }
+
+  /* El botón flotante crece con la pantalla (en TV el rem ya es mayor) */
+  .whatsapp-float {
+    width: 3.75rem;
+    height: 3.75rem;
+  }
+
+  .whatsapp-float__icon {
+    width: 1.9rem;
+    height: 1.9rem;
   }
 
   .nav__toggle {
@@ -1465,6 +1515,11 @@ ol {
   /* La lluvia binaria debe quedar estatica sin animacion */
   body::before,
   body::after {
+    animation: none;
+  }
+
+  /* El botón flotante de WhatsApp queda quieto */
+  .whatsapp-float {
     animation: none;
   }
 
