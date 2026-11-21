@@ -146,7 +146,7 @@
       <div class="hero__content">
         <p class="section__eyebrow">Hola, soy</p>
         <!-- aria-label evita que los pseudoelementos del glitch se anuncien de más -->
-        <h1 class="hero__title" id="inicio-title" aria-label="Jaiker Aponte" data-text="Jaiker Aponte">Jaiker Aponte</h1>
+        <h1 class="hero__title" id="inicio-title" tabindex="-1" aria-label="Jaiker Aponte" data-text="Jaiker Aponte">Jaiker Aponte</h1>
         <p class="hero__role">Desarrollador web frontend en Barinas, Venezuela</p>
         <p class="hero__description">
           Creo sitios responsivos y accesibles con HTML, CSS y JavaScript. Cuido la semántica,
@@ -218,7 +218,7 @@
     <!-- ============================ QUIÉN SOY ============================ -->
     <section class="section" id="quien-soy" aria-labelledby="quien-soy-title">
       <p class="section__eyebrow">Perfil profesional</p>
-      <h2 class="section__title" id="quien-soy-title">Quién soy</h2>
+      <h2 class="section__title" id="quien-soy-title" tabindex="-1">Quién soy</h2>
 
       <div class="about">
         <div class="about__text">
@@ -251,7 +251,7 @@
     <!-- ============================ MIS HABILIDADES ============================ -->
     <section class="section" id="habilidades" aria-labelledby="habilidades-title">
       <p class="section__eyebrow">Lo que sé hacer</p>
-      <h2 class="section__title" id="habilidades-title">Mis habilidades</h2>
+      <h2 class="section__title" id="habilidades-title" tabindex="-1">Mis habilidades</h2>
 
       <ul class="skills">
         <li class="skill">
@@ -301,10 +301,13 @@
     <!-- ============================ EXPERIENCIA ============================ -->
     <section class="section" id="experiencia" aria-labelledby="experiencia-title">
       <p class="section__eyebrow">Mi trayectoria</p>
-      <h2 class="section__title" id="experiencia-title">Experiencia y formación</h2>
+      <h2 class="section__title" id="experiencia-title" tabindex="-1">Experiencia y formación</h2>
 
       <!-- Sustituir TODOS los marcadores por datos reales. Si no hay experiencia
-           laboral formal, eliminar la segunda tarjeta en vez de dejar un puesto inventado. -->
+           laboral formal, eliminar la segunda tarjeta en vez de dejar un puesto inventado.
+           En el atributo datetime de cada <time> usar fechas ISO reales (AAAA-MM-DD);
+           el texto entre etiquetas puede seguir el formato local, pero el atributo
+           no admite marcadores. -->
       <ol class="timeline">
         <li>
           <article class="timeline__card">
@@ -343,7 +346,7 @@
     <!-- ============================ PORTAFOLIO ============================ -->
     <section class="section" id="portafolio" aria-labelledby="portafolio-title">
       <p class="section__eyebrow">Lo que he construido</p>
-      <h2 class="section__title" id="portafolio-title">Portafolio</h2>
+      <h2 class="section__title" id="portafolio-title" tabindex="-1">Portafolio</h2>
 
       <div class="projects">
         <article class="project">
@@ -408,7 +411,7 @@
     <!-- ============================ CONTACTO ============================ -->
     <section class="section" id="contacto" aria-labelledby="contacto-title">
       <p class="section__eyebrow">Hablemos</p>
-      <h2 class="section__title" id="contacto-title">Contacto</h2>
+      <h2 class="section__title" id="contacto-title" tabindex="-1">Contacto</h2>
       <p class="contact__intro">
         ¿Tienes un proyecto en mente? Cuéntame qué necesitas y te respondo con una propuesta clara.
       </p>
@@ -445,7 +448,12 @@
              ya redactado (sin servicios externos). app.js lee el destinatario
              del enlace mailto de arriba. -->
         <div class="contact__form">
-          <form class="form" id="contact-form" method="post">
+          <!-- Sin JavaScript el action mailto abre el correo del visitante con
+               los campos en el cuerpo (evita el error 405 de un POST a un sitio
+               estático); con JavaScript, app.js construye un mailto más limpio. -->
+          <form class="form" id="contact-form"
+                action="mailto:jaikerbreaking@gmail.com"
+                method="post" enctype="text/plain">
             <div class="form__field">
               <label for="nombre">Nombre</label>
               <input type="text" id="nombre" name="nombre" autocomplete="name" required>
@@ -459,7 +467,7 @@
               <textarea id="mensaje" name="mensaje" rows="6" required></textarea>
             </div>
             <button class="btn btn--primary" type="submit">Preparar mensaje</button>
-            <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
+            <p class="form__status" id="form-status" role="status"></p>
             <noscript>
               <p class="form__status">Para preparar el mensaje necesitas JavaScript. Mientras tanto, puedes escribirme a <a href="mailto:jaikerbreaking@gmail.com">jaikerbreaking@gmail.com</a>.</p>
             </noscript>
@@ -491,7 +499,7 @@
     <div class="footer__inner">
       <div>
         <p class="footer__copy">© [AÑO] Jaiker Aponte. Todos los derechos reservados.</p>
-        <p class="footer__copy">Hecho con HTML, CSS y JavaScript · Barinas, Venezuela</p>
+        <p class="footer__note">Hecho con HTML, CSS y JavaScript · Barinas, Venezuela</p>
       </div>
 
       <a class="footer__top" href="#inicio">Volver arriba</a>
