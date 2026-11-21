@@ -317,7 +317,7 @@ ol {
 }
 
 .section__eyebrow {
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.75rem;
   font-size: 0.9rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -326,7 +326,7 @@ ol {
 }
 
 .section__title {
-  margin: 0 0 1.5rem;
+  margin: 0 0 1.75rem;
   font-size: var(--fs-h2);
   font-weight: 500;
   line-height: 1.15;
@@ -491,16 +491,14 @@ ol {
 .hero__role {
   margin: 0.5rem 0 1rem;
   color: var(--color-muted);
-  max-width: 100%;
+  max-width: 36ch;
   overflow-wrap: break-word;
 }
 
 .hero__description {
   margin: 0;
-  max-width: 40ch;
+  max-width: 48ch;
   color: var(--color-muted);
-  /* Justificado generaba ríos de espacio en pantallas estrechas */
-  text-align: start;
   overflow-wrap: break-word;
 }
 
@@ -704,7 +702,7 @@ ol {
 .about__text p {
   margin-top: 0;
   margin-bottom: 1rem;
-  max-width: 60ch;
+  max-width: 52ch;
 }
 .about__text p:last-child {
   margin-bottom: 0;
@@ -1056,14 +1054,14 @@ ol {
 
 /* Introducción de la sección de contacto */
 .contact__intro {
-  margin: -0.5rem 0 1.5rem;
-  max-width: 60ch;
+  margin: 0 0 1.5rem;
+  max-width: 52ch;
   color: var(--color-muted);
 }
 
 .contact__note {
   margin-top: 1.5rem;
-  max-width: 45ch;
+  max-width: 52ch;
   color: var(--color-muted);
 }
 
@@ -1281,9 +1279,13 @@ ol {
   margin-top: 0;
 }
 
-/* ============================ CENTRADO DE CONTENIDO ============================ */
-/* Se centran los h3 y los párrafos de contenido. Quedan fuera la consola
-   decorativa, las etiquetas de contacto (van junto a su icono) y los eyebrows. */
+/* ============================ ALINEACIÓN TIPOGRAFICA ============================ */
+/* Un solo eje izquierdo para todo el texto: eyebrows, H1, H2, H3, fechas,
+   etiquetas y párrafos empiezan en el mismo borde. El justificado se reserva
+   a la prosa larga y solo cuando la columna es suficientemente ancha. */
+.section__eyebrow,
+.section__title,
+.hero__title,
 .hero__role,
 .hero__description,
 .about__text p,
@@ -1299,9 +1301,78 @@ ol {
 .contact__intro,
 .contact__note,
 .contact__address,
+.contact__label,
 .contact__map-title,
+.form__status,
+.footer__copy,
+.hero__terminal-line {
+  text-align: start;
+  hyphens: none;
+}
+
+/* Bloques cortos (hasta 6 líneas): se equilibran los remates de línea. */
+.section__eyebrow,
+.section__title,
+.hero__title,
+.hero__role,
+.skill__title,
+.timeline__date,
+.timeline__title,
+.timeline__place,
+.project__title,
+.project__role,
+.contact__label,
+.contact__map-title,
+.contact__address,
+.footer__copy {
+  text-wrap: balance;
+}
+
+/* Prosa: se prefiere un final de línea limpio antes que velocidad de layout. */
+.hero__description,
+.about__text p,
+.skill__text,
+.timeline__text,
+.project__text,
+.contact__intro,
+.contact__note,
 .form__status {
-  text-align: center;
+  text-wrap: pretty;
+}
+
+/* Código: se blinda frente a cualquier alineación heredada. */
+.hero__terminal-line {
+  text-align: left;
+  white-space: nowrap;
+  hyphens: none;
+}
+
+/* Justificado solo con columna ancha. En móvil y tablet se conserva el
+   ragged right: en estrecho, los espacios se alinean formando "ríos". */
+@media (min-width: 1280px) {
+  .hero__description,
+  .about__text p,
+  .contact__intro,
+  .contact__note {
+    text-align: justify;
+    hyphens: auto;
+    text-align-last: left;
+  }
+
+  /* El hero gana medida antes de justificarse (48ch -> 56ch). */
+  .hero__description {
+    max-width: 56ch;
+  }
+
+  /* Mejora gradual en Chromium: evita guionar palabras demasiado cortas. */
+  @supports (hyphenate-limit-chars: 7) {
+    .hero__description,
+    .about__text p,
+    .contact__intro,
+    .contact__note {
+      hyphenate-limit-chars: 8;
+    }
+  }
 }
 
 /* ============================ MEDIA QUERIES ============================ */
