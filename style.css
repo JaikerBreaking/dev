@@ -1347,6 +1347,14 @@ ol {
   hyphens: none;
 }
 
+/* Los títulos de las tarjetas de habilidades y experiencia se centran
+   dentro de su propia tarjeta; el resto de la jerarquía mantiene el eje
+   izquierdo compartido. */
+.skill__title,
+.timeline__title {
+  text-align: center;
+}
+
 /* Justificado solo con columna ancha. En móvil y tablet se conserva el
    ragged right: en estrecho, los espacios se alinean formando "ríos". */
 @media (min-width: 1280px) {
